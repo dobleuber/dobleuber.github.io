@@ -90,10 +90,9 @@ p {
 }
 
 .photo {
-  width: 27.2rem;
-  height: 27.2rem;
-  -o-object-fit: contain;
-     object-fit: contain;
+  width: 28rem;
+  height: 28rem;
+  object-fit: cover;
 }
 
 .middleLine {
