@@ -10,7 +10,7 @@ const resume = {
   education: [
     {
       school: 'Universidad de Antioquia',
-      description: 'Ingenieria de Sistemas'
+      description: 'Systems Engineering'
     },
     {
       school: 'Udacity',
