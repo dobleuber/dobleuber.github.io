@@ -233,3 +233,50 @@ span {
     margin-left: 1rem;
   }
 }
+
+/* Keep the original monochrome résumé while accommodating current content. */
+* { outline: revert !important; }
+body { margin: 0; background: #fff; color: #292929; }
+animatable-component { display: block; }
+.container-fluid { max-width: 160rem; margin: 0 auto; padding: 0 5% !important; }
+p, .jobTitle span { word-break: normal; overflow-wrap: anywhere; }
+.firstName { font-size: clamp(3.4rem, 5vw, 7rem); letter-spacing: 1.2rem; }
+.lastName { font-size: clamp(4rem, 6vw, 8rem); letter-spacing: 1.4rem; padding-right: 0; }
+.header { padding-top: 12rem; padding-bottom: 9rem; }
+.headLine { height: 8rem; }
+.jobTitle span { font-size: clamp(1.8rem, 2.2vw, 3rem); letter-spacing: .28rem; line-height: 1.5; }
+.title { font-size: clamp(2rem, 2.5vw, 3.2rem); letter-spacing: .3rem; padding-bottom: 2rem; line-height: 1.4; }
+p, .record p, .achievements li, .personal-details li { font-size: 1.8rem; line-height: 1.65; letter-spacing: .02rem; }
+.achievements { padding-left: 2.2rem; }
+.achievements li { margin-bottom: .8rem; color: #666766; }
+.employment-date, .education-date { display: block; font-size: 1.5rem; letter-spacing: .06rem; margin-top: .4rem; line-height: 1.5; }
+.skill-group { margin-bottom: 2.2rem; }
+.skill-group h3 { font-size: 1.8rem; font-weight: 700; }
+.links.record p { font-size: 1.6rem; }
+.personal-details { min-width: 0; }
+.career-details { min-width: 0; }
+.resume-fallback p { font: inherit; }
+
+@media (max-width: 991px) {
+  .content > .row { flex-direction: column; }
+  .career-details { order: -1; }
+  .personal-details { margin-top: 4rem; }
+  .header { padding-top: 8rem; padding-bottom: 6rem; }
+  .headLine { height: 5rem; }
+  .middleLine { height: 3rem; bottom: 1.5rem; }
+  .jobTitle { margin-top: 2.5rem; }
+  .firstName { letter-spacing: .65rem; }
+  .lastName { letter-spacing: .75rem; white-space: normal !important; }
+}
+
+@media print {
+  html { font-size: 45%; }
+  .container-fluid { padding: 0 3% !important; }
+  .header { padding-top: 7rem; padding-bottom: 5rem; }
+  .content > .row { flex-direction: row; }
+  .personal-details { width: 34%; margin-top: 0; }
+  .career-details { width: 66%; order: 0; }
+  .photo { width: 20rem; height: 20rem; }
+  .record { break-inside: avoid; }
+  .btn-group-fab { display: none; }
+}

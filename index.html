@@ -1,21 +1,34 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resume/CV</title>
+    <title>Wbert Castro | Software Engineering and Agentic Development</title>
+    <meta name="description" content="Wbert Castro, software engineer with 20+ years of experience. Node.js, TypeScript, agentic development, code review, testing and developer mentoring.">
+    <link rel="canonical" href="https://www.dobleuber.one/">
+    <link rel="icon" href="favicons/favicon.ico">
+    <style>[v-cloak] { display: none; } .resume-fallback { max-width: 60rem; margin: 3rem auto; padding: 1.5rem; font: 18px/1.6 system-ui, sans-serif; }</style>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link href="styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link href="styles.css?v=20261109" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
 
     <!-- Add Web Animations Polyfill :) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@proyecto26/animatable-component@1.1.10/dist/animatable-component/animatable-component.esm.js"></script>
   </head>
-  <body class="d-none">
-    <section id="app" class="container-fluid">
+  <body>
+    <main id="resume-fallback" class="resume-fallback">
+      <h1>Wbert Castro</h1>
+      <h2>Software Engineering and Agentic Development</h2>
+      <p>Software engineer with 20+ years of experience. Node.js, TypeScript, Claude Code and Codex, code review, automated testing and integration diagnosis.</p>
+      <p>Software Engineer at NodeSource since April 2025. Colombia, remote.</p>
+      <p><a href="mailto:dobleuber@gmail.com">dobleuber@gmail.com</a> · <a href="https://github.com/dobleuber">GitHub</a> · <a href="https://linkedin.com/in/dobleuber">LinkedIn</a></p>
+      <noscript><p>JavaScript is disabled. The full interactive résumé is available when JavaScript is enabled.</p></noscript>
+    </main>
+    <main id="app" class="container-fluid" v-cloak>
       <header class="header position-relative">
         <animatable-component autoplay animation="fadeInDownBig"  easing="ease-in-out" duration="1200">
           <div class="headLine position-absolute"></div>
@@ -58,7 +71,7 @@
           </div>
           <div v-if="!!photo" class="col-auto d-none d-lg-block d-print-block">
             <animatable-component autoplay animation="rotateIn" easing="ease-in" duration="1200">
-              <img v-bind:src.prop="photo" class="photo border border-2 border-dark rounded-circle img-fluid float-end img-thumbnail">
+              <img v-bind:src.prop="photo" alt="Wbert Castro" width="280" height="280" class="photo border border-2 border-dark rounded-circle img-fluid float-end img-thumbnail">
             </animatable-component>
           </div>
         </div>
@@ -68,7 +81,7 @@
       </header>
       <section class="content">
         <div class="row">
-          <div class="col personal-details me-4">
+          <aside class="col-12 col-lg-4 personal-details pe-lg-5">
             <div class="row list-item me-5">
               <div class="col-auto">
                 <animatable-component autoplay animation="heartBeat" easing="ease-in" duration="1200">
@@ -114,16 +127,16 @@
                 <p class="title">Education</p>
               </div>
             </div>
-            <div class="row record" v-for="e in education">
+            <div class="row record" v-for="e in education" :key="e.school">
               <div class="col-auto bullet">
                 <i class="bi bi-record-circle"></i>
               </div>
               <div class="col">
-                <p class="fw-bold text-uppercase">
+                <p v-if="e.degree" class="fw-bold text-uppercase">
                   {{ e.degree }}
                 </p>
                 <p class="fw-bold text-uppercase">
-                  {{ e.school }}, {{ e.graduationDate }}
+                  {{ e.school }}<span v-if="e.graduationDate" class="education-date">{{ e.graduationDate }}</span>
                 </p>
                 <p>{{ e.description }}</p>
               </div>
@@ -133,14 +146,14 @@
                 <p class="title">Links</p>
               </div>
             </div>
-            <div class="row links record me-4" v-for="l in links">
+            <div class="row links record me-4" v-for="l in links" :key="l.label">
               <div class="col-auto bullet mb-5">
                 <i class="bi bi-record-circle"></i>
               </div>
               <div class="col">
                 <p>
                   {{ l.label }}:
-                  <a class="text-reset" target="_blank" v-bind:href.prop="l.link">
+                  <a class="text-reset" target="_blank" rel="noopener noreferrer" v-bind:href.prop="l.link">
                     {{ l.link }}
                   </a>
                 </p>
@@ -153,11 +166,10 @@
             </div>
             <div class="row">
               <div class="col">
-                <ul class="ms-2">
-                  <li class="pb-2" v-for="skill in skills">
-                    {{ skill }}
-                  </li>
-                </ul>
+                <div class="skill-group" v-for="group in skillGroups" :key="group.label">
+                  <h3>{{ group.label }}</h3>
+                  <p>{{ group.description }}</p>
+                </div>
               </div>
             </div>
             <div class="row mt-5 me-5">
@@ -168,14 +180,14 @@
             <div class="row">
               <div class="col">
                 <ul class="ms-2">
-                  <li class="pb-2" v-for="language in languages">
+                  <li class="pb-2" v-for="language in languages" :key="language">
                     {{ language }}
                   </li>
                 </ul>
               </div>
             </div>
-          </div>
-          <div class="col col-8">
+          </aside>
+          <div class="col-12 col-lg-8 career-details">
             <animatable-component
               autoplay
               animation="fade-in-right"
@@ -214,37 +226,35 @@
                 <p class="title">Work Experience</p>
               </div>
             </div>
-            <div class="row record mb-4 bullet" v-for="employment in employmentHistory">
+            <div class="row record mb-4 bullet" v-for="employment in employmentHistory" :key="employment.employer + employment.startDate">
               <div class="col-auto">
                 <i class="bi bi-record-circle"></i>
               </div>
               <div class="col">
                 <p class="text-uppercase fw-bold position-relative">
                   {{ employment.jobTitle }}
-                  <span>&nbsp;|&nbsp;{{ employment.startDate }} - {{ employment.endDate }}</span>
+                  <span v-if="employment.startDate &amp;&amp; employment.endDate" class="employment-date">{{ employment.startDate }} – {{ employment.endDate }}</span>
                 </p>
-                <p class="text-lowercase fst-italic fw-bold">
+                <p class="fst-italic fw-bold">
                   {{ employment.employer }}, {{ employment.city }}
                 </p>
-                <p class="mb-0" v-for="achievement in employment.achievements">
-                  • {{ achievement }}
-                </p>
+                <ul class="achievements">
+                  <li v-for="achievement in employment.achievements" :key="achievement">{{ achievement }}</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </section>
+    </main>
     <div class="btn-group-fab d-print-none">
       <div>
-        <button onclick="javascript:window.print()" type="button" class="btn btn-main btn-primary" title="Print">
+        <button onclick="javascript:window.print()" type="button" class="btn btn-main btn-primary" title="Print" aria-label="Print résumé">
           <i class="bi bi-printer fs-3"></i>
         </button>
       </div>
     </div>
     
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script defer src="index.js?v=20261109"></script>
   </body>
 </html>

@@ -1,99 +1,99 @@
 /**
- * Resume/CV template created with Bootstrap 5 by @vmoratog and @jdnichollsc
+ * Resume/CV template created with Bootstrap 5 by @vmoratog and @jdnichollsc.
+ * Content reflects Wbert Castro's current resume.
  */
 const resume = {
   firstName: 'Wbert',
   lastName: 'Castro',
-  jobTitle: 'Full Stack Developer',
+  jobTitle: 'Software Engineering and Agentic Development',
   country: 'Colombia',
+  phone: '',
   email: 'dobleuber@gmail.com',
   education: [
     {
+      school: 'Let’s Get Rusty',
+      degree: 'Rust Live Bootcamp Accelerator',
+      graduationDate: 'Jul–Sep 2024',
+      description: 'Built a Rust authentication service with PostgreSQL, Redis and CI/CD. Practiced embedded constraints with no_std Rust and heapless data structures.'
+    },
+    {
+      school: 'Udacity',
+      graduationDate: '2020–2021',
+      description: 'Robotics Software Engineer; Deep Reinforcement Learning; Introduction to Machine Learning with TensorFlow.'
+    },
+    {
       school: 'Universidad de Antioquia',
+      graduationDate: '1997–2003',
       description: 'Systems Engineering'
-    },
-    {
-      school: 'Udacity',
-      description: 'Robotics Software Engineer, Mechatronics, Robotics, and Automation Engineering'
-    },
-    {
-      school: 'Udacity',
-      description: 'Deep Reinforcement Learning Nanodegree Program, Artificial Intelligence'
-    },
-    {
-      school: 'Udacity',
-      description: 'Introduction to Machine Learning with TensorFlow Nanodegree Program, Artificial Intelligence'
     }
   ],
   links: [
+    { label: 'GitHub', link: 'https://github.com/dobleuber' },
+    { label: 'LinkedIn', link: 'https://linkedin.com/in/dobleuber' },
+    { label: 'Personal Website', link: 'https://www.dobleuber.one/' }
+  ],
+  skillGroups: [
     {
-      label: 'GitHub',
-      link: 'https://github.com/dobleuber'
+      label: 'Agentic development',
+      description: 'Claude Code, Codex, AI-assisted development, parallel work coordination, MCP integrations, independent review and test validation.'
     },
     {
-      label: 'LinkedIn',
-      link: 'https://linkedin.com/in/dobleuber'
+      label: 'Engineering practice',
+      description: 'Git, isolated worktrees, shell and CLI workflows, CI/CD, test automation, code review, debugging and technical documentation.'
     },
     {
-      label: 'Personal Website',
-      link: 'https://www.dobleuber.one/'
+      label: 'Technical foundation',
+      description: 'TypeScript, JavaScript, Node.js, React, Express, Python and Rust; PostgreSQL, Redis and Firebase; authentication and authorization.'
+    },
+    {
+      label: 'Additional skills',
+      description: 'C#, HTML, CSS, Django, TensorFlow and Keras; MySQL, MSSQL and SQLite; AWS, GCP, Heroku and Cloudflare.'
     }
   ],
-  skills: [
-    'C#',
-    'JavaScript',
-    'TypeScript',
-    'Rust',
-    'Python',
-    'Ruby',
-    'NodeJS',
-    'ReactJS',
-    'Tensorflow',
-    'Keras',
-    'Angular',
-    'PostgreSQL'
-  ],
   languages: ['English', 'Spanish'],
-  professionalSummary: `As a dedicated polyglot programmer, I thrive in diverse technological environments, employing a robust toolkit of languages such as JS/TS, C#, Python, and Ruby. I bring extensive experience and continuously strive to hone my skills and deepen my knowledge each day. I enjoy embracing challenges, constructing innovative solutions, and learning new technologies.
-
-Having worked extensively with ReactJs, I've shared my passion and expertise through numerous Meetups on ReactJs and ReactNative. I'm deeply committed to educating others in development and sharing the intriguing insights I've garnered along the way.
-
-In recent years, I've expanded my technical skills by delving into machine learning and robotics through Udacity courses, exploring blockchain development, and indulging my enthusiasm for 3D printing. I've been studying Rust for the past three years, initially applying it to blockchain projects and later transitioning to embedded systems. Always on the lookout for new challenges, I aim to leverage my skills and curiosity to make a positive impact on the world.
-`,
+  professionalSummary: 'Software engineer with 20+ years of experience building web applications and working with international remote teams. Current work combines Node.js and TypeScript engineering with Claude Code and Codex workflows, code review, automated testing and integration diagnosis. Background includes authentication, real-time applications, CI/CD and developer mentoring, supported by formal training in machine learning, reinforcement learning and Rust.',
   employmentHistory: [
     {
-      jobTitle: 'Full Stack Engineer',
-      startDate: 'May 2022',
+      jobTitle: 'Software Engineer',
+      startDate: 'Apr 2025',
       endDate: 'Present',
-      employer: 'MediaLab',
-      city: 'Rionegro, Antioquia, Colombia',
+      employer: 'NodeSource',
+      city: 'Contractor, remote',
       achievements: [
-        'At Genius, a music community portal with millions of daily users, I played a key role as a full-stack engineer in the implementation of the new header for the song page, enhancing the overall user experience.',
-        'Contributed significantly to the song page by implementing user-friendly changes, leading to increased community engagement and enriched site content.',
-        'Developed and deployed the code necessary to incorporate new advertising campaigns, increasing the visibility of our advertisers and boosting platform profitability.',
-        'Provided robust technical support to ensure the smooth operation of the site, maintaining high service availability for our user base.',
-        'Assisted both the community and team members by providing technical solutions and advice, boosting team efficiency and user satisfaction.'
+        'Contribute to the N|Solid platform, with work spanning account onboarding, authentication and authorization, test tooling and CLI behavior.',
+        'Coordinate AI-assisted implementation, review and validation with Claude Code and Codex, using scoped tasks and isolated Git worktrees for concurrent work.',
+        'Evaluate generated changes through code review and tests, checking dependencies and distinguishing local or CI results from real-environment validation.',
+        'Investigate integration failures using runtime probes, test output and observability tools, including MCP-based access to diagnostic sources.'
       ]
     },
     {
       jobTitle: 'Full Stack Engineer',
-      startDate: 'Feb 2022',
-      endDate: 'May 2022',
-      employer: 'Vertrical',
-      city: 'Rionegro, Antioquia, Colombia',
+      // The end date is not confirmed. Leave the date range off the public site.
+      employer: 'Trashie.io',
+      city: 'US team, remote',
       achievements: [
-        'I was working on an online pharmacy, where users could buy their medicines and health supplies with their prescriptions.',
-        'This web site was developed with React, Gatsby and Nodejs.'
+        'Built an online store with Node.js and React for a clothing reuse and recycling business, and integrated external services into customer-facing workflows.'
+      ]
+    },
+    {
+      jobTitle: 'Full Stack Engineer',
+      startDate: 'May 2022',
+      endDate: 'Aug 2024',
+      employer: 'MediaLab',
+      city: 'US team, remote',
+      achievements: [
+        'Developed features for Genius song pages and advertising, and provided technical support for the platform.'
       ]
     },
     {
       jobTitle: 'Software Developer',
       startDate: 'Nov 2020',
-      endDate: 'Jan 2022',
+      endDate: 'Feb 2022',
       employer: 'Perficient Latin America',
-      city: 'Remote',
+      city: 'US clients, remote',
       achievements: [
-        'I am working in the creation and maintenance of websites and features for companies in the construction and automobile industries.', 'I worked with React, Material-UI, and Nodejs mostly. I should work in component development by using Storybook as a sandbox.','I used to mentor other devs and prepared and gave workshops about React, Unit Testing, and good coding practices.'
+        'Built websites and features for construction and automotive clients with React, Material-UI and Node.js.',
+        'Mentored developers and led technical workshops.'
       ]
     },
     {
@@ -103,19 +103,18 @@ In recent years, I've expanded my technical skills by delving into machine learn
       employer: 'Monadical',
       city: 'Remote',
       achievements: [
-        'I was working with React creating real-time websites, integrating Firebase Realtime Database and Firestore, and rest API built with Django rest API.',
-        'I created a functional chat for the first Mutek music festival using Nodejs, Redis, and Socket.io. I was working with a team of worldwide volunteers. I must support them and complete my task too.'
+        'Built real-time applications with React, Firebase Realtime Database and Firestore, and REST APIs with Django.',
+        'Led development of a real-time chat for the Mutek music festival using Node.js, Redis and Socket.io, collaborating with international volunteers.'
       ]
     },
     {
       jobTitle: 'Frontend Developer',
       startDate: 'Jul 2018',
       endDate: 'Feb 2020',
-      employer: 'Mahisoft Inc',
+      employer: 'Mahisoft',
       city: 'Remote',
       achievements: [
-        'I worked with React to create stunning websites for our clients. Our websites were responsive and serverside rendered.',
-        'I worked mostly in a mobile web app, using responsive design, I decided to use Razzle because it supports server-side rendering. We needed to create a lot of forms, so I created a generic component to create forms by configuration based on Formik, that component had some performance issues when was used in big forms but I could fix them.',
+        'Developed responsive websites and mobile web applications with React and Razzle, with a focus on performance and user interactions.'
       ]
     },
     {
@@ -123,90 +122,50 @@ In recent years, I've expanded my technical skills by delving into machine learn
       startDate: 'Dec 2014',
       endDate: 'Jun 2018',
       employer: 'PSL Corp',
-      city: 'Medellín/Colombia',
+      city: 'Medellín, Colombia',
       achievements: [
-        'I created several mobile apps for this client, we had to create real hybrid apps mixing web-views with android and iOS views. It was challenging because I had to learn a lot about native development for android and iOS at the same time.',
-        'Senior Frontend developer building a website for a big advertisement company with Angular.io and Typescript. We were working with a big application built with Angujar.js. We migrated this app to angular.io. We created a lot of new features at a really fast speed completing the backend and frontend code, and automatic testing in a single sprint. The client was really satisfied with our performance.'
+        'Built hybrid mobile applications combining web and native Android/iOS views, and migrated an advertising platform from AngularJS to Angular.'
       ]
     },
     {
-      jobTitle: 'Freelance Developer',
+      jobTitle: 'Developer',
       startDate: 'May 2014',
       endDate: 'Jun 2015',
-      employer: 'ODesk jobs',
-      city: 'Remote',
+      employer: 'Freelance',
+      city: 'US and European clients, remote',
       achievements: [
-        'I worked by using Odesk for clients mostly in the US and Europe. I started working with Angular and Phonegap, but I ended working with React.',
-        'My relationship with my clients was great. I built good-quality apps and met all deadlines.'
-      ]
-    },
-    {
-      jobTitle: 'Web Developer',
-      startDate: 'May 2009',
-      endDate: 'Mar 2014',
-      employer: 'PSL Corp',
-      city: 'Medellín/Colombia',
-      achievements: [
-        'We built the first .Net project in PSL. This project was the base for all the other .Net projects in PSL for many years.',
-        'We designed and implemented a system for the biggest advertisement company in Colombia, the publishers of yellow pages for Colombia and Brazil. They wanted to centralize all the advertisement requests in a single system and then distribute them to creation centers in Colombia and Brazil.',
-        'A central part of my position was training the whole team. I should do peer reviews, support the whole team, and write documentation about how to use the tools.'
-      ]
-    },
-    {
-      jobTitle: 'Web Developer',
-      startDate: 'Jun 2007',
-      endDate: 'May 2009',
-      employer: 'Axede',
-      city: 'Medellín/Colombia',
-      achievements: [
-        'I worked as outsource developer on VirtualExito.com, now exito.com. The biggest retail company in Colombia, by that time we were improving the online store in the site. I implemented the first shopping cart for groceries. And I integrated the store with credit card payment providers.'
-      ]
-    },
-    {
-      jobTitle: 'Web Developer',
-      startDate: 'Jun 2005',
-      endDate: 'Apr 2007',
-      employer: 'Seriva',
-      city: 'Medellín/Colombia',
-      achievements: [
-        'I was working on the customization of Seriva Suit for Helm Bank in Colombia.',
-        'We designed and build a custom product for Swift transactions, and an application built at windows to facilitate US Embassy paperwork and payments.'
+        'Developed applications with Angular, PhoneGap and React for international clients.'
       ]
     },
     {
       jobTitle: 'Web Developer',
       startDate: 'Oct 2004',
-      endDate: 'Jun 2005',
-      employer: 'Symmetry Limited',
-      city: 'Medellín/Colombia',
+      endDate: 'Mar 2014',
+      employer: 'Earlier engineering roles',
+      city: 'Colombia',
       achievements: [
-        `I worked developing Avianca's booking engine: book tickets, and pay them using integration with the biggest online payment providers at that moment; the biggest airline company in Colombia.`,
+        'PSL Corp (2009–2014), Axede (2007–2009), Seriva (2005–2007) and Symmetry Limited (2004–2005).',
+        'Delivered .NET applications, advertising operations systems, e-commerce and payment integrations, banking software and an airline booking engine.'
       ]
-    },
+    }
   ],
-  photo: 'https://www.dobleuber.one/static/me-8cbf36c91ba9a3a69604ded2dbd04302-73218.jpg',
+  photo: 'static/me-8cbf36c91ba9a3a69604ded2dbd04302-73218.jpg'
 }
 
 const formatResume = (r) => ({
   ...r,
-  address: [
-    r.country,
-    r.city,
-    r.postalCode
-  ].filter(Boolean).join(', ')
+  address: [r.country, r.city, r.postalCode].filter(Boolean).join(', ')
 })
 
-new Vue({
-  el: "#app",
-  data: formatResume(resume)
-});
-
-/**
- * Wait for animatable-component to be loaded (Only for VanillaJS)
- **/
-function animatableLoaded() {
-  document.querySelector('body').classList.remove('d-none');
+// The readable fallback remains available if the optional Vue CDN is unavailable.
+if (typeof Vue !== 'undefined') {
+  Vue.config.ignoredElements = ['animatable-component']
+  new Vue({
+    el: '#app',
+    data: formatResume(resume),
+    mounted() {
+      document.getElementById('resume-fallback').hidden = true
+    }
+  })
 }
-if (customElements) {
-  customElements.whenDefined('animatable-component').then(animatableLoaded);
-} else animatableLoaded()
+// Animations enhance the page; they never gate its visibility.
