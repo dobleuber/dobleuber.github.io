@@ -650,8 +650,8 @@ a:hover {
   left: 0;
   top: 0.8em;
   width: 0.65rem;
-  height: 1px;
-  background: var(--cyan);
+  height: 0;
+  border-top: 1px solid var(--cyan);
 }
 
 .entry__text {
@@ -857,6 +857,21 @@ a:hover {
   }
 }
 
+/* Short (landscape) viewports: a two-row sticky bar would cover too much. */
+@media (max-height: 32em) {
+  :root {
+    --topbar-h: 0rem;
+  }
+
+  .topbar {
+    position: static;
+  }
+
+  html {
+    scroll-padding-top: 1rem;
+  }
+}
+
 /* Phones: top bar scrolls away instead of covering the small viewport. */
 @media (max-width: 47.99em) {
   .topbar {
@@ -917,11 +932,23 @@ a:hover {
   .hero__last::after,
   .section::before,
   .entry--current::before {
-    background: CanvasText;
+    height: 0;
+    background: none;
+    border-top: 2px solid CanvasText;
+  }
+
+  .section::before,
+  .entry--current::before {
+    border-top-width: 1px;
+  }
+
+  .entry__points li::before {
+    border-top-color: CanvasText;
   }
 
   .status-dot {
-    background: CanvasText;
+    background: none;
+    border: 0.275rem solid CanvasText;
   }
 }
 
@@ -1011,8 +1038,9 @@ a:hover {
   }
 
   .hero__last::after {
-    height: 1.5pt;
-    background: #0b3d91;
+    height: 0;
+    background: none;
+    border-top: 1.5pt solid #0b3d91;
   }
 
   .hero__portrait {
@@ -1127,7 +1155,7 @@ a:hover {
   }
 
   .entry__points li::before {
-    background: #0b3d91;
+    border-top-color: #0b3d91;
   }
 
   .skills {
