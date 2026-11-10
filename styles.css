@@ -247,8 +247,7 @@ a:hover {
   border-bottom: 1px solid transparent;
 }
 
-.sitenav a:hover,
-.sitenav a[aria-current="true"] {
+.sitenav a:hover {
   color: var(--cyan);
   border-bottom-color: var(--cyan);
 }
@@ -598,10 +597,6 @@ a:hover {
   color: var(--text-faint);
 }
 
-.entry__when--empty:empty {
-  display: none;
-}
-
 .present {
   display: inline-block;
   padding: 0.05rem 0.45rem;
@@ -687,10 +682,6 @@ a:hover {
 
   .entry__when {
     padding-top: 0.35rem;
-  }
-
-  .entry__when--empty:empty {
-    display: block;
   }
 }
 
@@ -895,42 +886,16 @@ a:hover {
   }
 }
 
-/* ---------- 10. Motion (opt-in, content never hidden without it) ---------- */
+/* ---------- 10. Motion (opt-in; only the decorative neon rule animates) ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__first,
-  .hero__last,
-  .hero__label,
-  .hero__meta {
-    animation: rise 900ms var(--ease-out) both;
-  }
-
-  .hero__label { animation-delay: 60ms; }
-  .hero__first { animation-delay: 120ms; }
-  .hero__last  { animation-delay: 220ms; }
-  .hero__meta  { animation-delay: 420ms; }
-
   .hero__last::after {
     transform-origin: left;
-    animation: draw 1100ms 520ms var(--ease-out) both;
-  }
-
-  .portrait-frame picture {
-    animation: reveal 500ms var(--ease-out) both;
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
+    animation: draw 700ms 150ms var(--ease-out) both;
   }
 
   @keyframes draw {
     from { transform: scaleX(0); }
     to   { transform: scaleX(1); }
-  }
-
-  @keyframes reveal {
-    from { clip-path: inset(0 0 100% 0); }
-    to   { clip-path: inset(0); }
   }
 }
 
@@ -1126,11 +1091,25 @@ a:hover {
 
   .entry__when {
     padding-top: 0.6mm;
-    font-size: 7.5pt;
+    font-size: 7pt;
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+    white-space: normal;
   }
 
-  .entry__when--empty:empty {
-    display: block;
+  .entry__when time,
+  .entry__when .present {
+    white-space: nowrap;
+  }
+
+  .ledger:not(.ledger--compact) .entry__when::before {
+    margin-right: 1.5mm;
+  }
+
+  .present {
+    padding: 0 0.8mm;
+    border-width: 0.5pt;
+    line-height: 1.3;
   }
 
   .entry__role {
