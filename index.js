@@ -136,6 +136,7 @@
     function stop () {
       if (stopped) return
       stopped = true
+      win.clearTimeout(backstop)
       heading.classList.remove('is-deciphering')
       overlays.forEach(function (overlay) {
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay)
@@ -163,6 +164,8 @@
       else win.setTimeout(stop, 320)
     }
 
+    // Wall-clock backstop: restore the real text even if frames stall.
+    var backstop = win.setTimeout(stop, 1500)
     raf(tick)
     return stop
   }
@@ -282,6 +285,18 @@
       return !calm() && matches(finePointer) && event.pointerType !== 'touch'
     }
 
+    // Untransformed frame box: the figure is never transformed, and offset*
+    // values ignore the frame's own tilt transform.
+    function frameBox () {
+      var origin = figure.getBoundingClientRect()
+      return {
+        left: origin.left + frame.offsetLeft,
+        top: origin.top + frame.offsetTop,
+        width: frame.offsetWidth,
+        height: frame.offsetHeight
+      }
+    }
+
     if (win.PointerEvent) {
       figure.addEventListener('pointerenter', function (event) {
         if (!canTilt(event)) return
@@ -290,7 +305,7 @@
       })
       figure.addEventListener('pointermove', function (event) {
         if (!canTilt(event)) return
-        if (!box) box = frame.getBoundingClientRect()
+        if (!box) box = frameBox()
         if (!box.width || !box.height) return
         target = {
           x: clamp((event.clientX - box.left) / box.width - 0.5, -0.5, 0.5),
@@ -303,6 +318,7 @@
       })
       figure.addEventListener('pointerleave', resetTilt)
       win.addEventListener('scroll', function () { box = null }, { passive: true })
+      win.addEventListener('resize', resetTilt)
     }
 
     return { sweep: sweep, endSweep: endSweep, resetTilt: resetTilt }
@@ -325,6 +341,13 @@
 
     var visible = true
     var queued = false
+    var nodeOffset = 0
+
+    // Node position comes from CSS (--node-top); cache it, refresh on
+    // resize and preference changes.
+    function measureNode () {
+      nodeOffset = parseFloat(win.getComputedStyle(entries[0], '::after').top) || 0
+    }
 
     function update () {
       queued = false
@@ -335,7 +358,6 @@
         ? 1
         : clamp((win.innerHeight * 0.6 - railBox.top) / railBox.height, 0, 1)
       var reach = railBox.top + progress * railBox.height
-      var nodeOffset = parseFloat(win.getComputedStyle(entries[0], '::after').top) || 0
       var tops = entries.map(function (entry) { return entry.getBoundingClientRect().top })
 
       fill.style.transform = 'scaleY(' + progress.toFixed(4) + ')'
@@ -356,10 +378,16 @@
         schedule()
       }, { rootMargin: '25% 0px' }).observe(body)
     }
+    function refresh () {
+      measureNode()
+      schedule()
+    }
+
     win.addEventListener('scroll', schedule, { passive: true })
-    win.addEventListener('resize', schedule)
+    win.addEventListener('resize', refresh)
+    measureNode()
     update()
-    return { refresh: schedule }
+    return { refresh: refresh }
   }
 
   /* ---------- Wiring ---------- */
